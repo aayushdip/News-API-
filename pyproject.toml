@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "news site using edge db"
+version = "0.1.0"
+description = "This is the API of news site"
+authors = ["Aayush Dip Giri <aayush.giri@codavatar.tech>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.100.1"
+sqlalchemy = "^2.0.19"
+uvicorn = "^0.23.2"
+psycopg-binary = "^3.1.9"
+bcrypt = "^4.0.1"
+annotated = "^0.0.2"
+alembic = "^1.11.1"
+fastapi-sqlalchemy = "^0.2.1"
+python-jose = "^3.3.0"
+passlib = "^1.7.4"
+python-multipart = "^0.0.6"
+psycopg2-binary = "^2.9.6"
+edgedb = "^1.5.0"
+email-validator = "^2.0.0.post2"
+pydantic = "1.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
