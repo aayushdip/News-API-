@@ -32,3 +32,6 @@ async def post_user(user: UserCreate) -> create_user_qry.CreateUserResult:
             detail={"error": f"Username '{user.name}' already exists."},
         )
     return created_user
+
+
+print("hello")
