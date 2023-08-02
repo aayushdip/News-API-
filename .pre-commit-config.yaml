@@ -1,0 +1,60 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+    - id: detect-aws-credentials
+      args: ["--allow-missing-credentials"]
+    - id: detect-private-key
+    - id: check-added-large-files
+    - id: check-symlinks
+    - id: check-merge-conflict
+    - id: check-yaml
+    - id: debug-statements
+  - repo: https://github.com/PyCQA/bandit
+    rev: "1.7.4"
+    hooks:
+    - id: bandit
+      exclude: '/tests'
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.961
+    hooks:
+    - id: mypy
+      exclude: ^core/utils/date_filter.py
+      additional_dependencies: [types-PyYAML==5.4.6, types-python-slugify, 'types-requests', 'types-pytz']
+  - repo: https://github.com/PyCQA/flake8
+    rev: 4.0.1
+    hooks:
+    - id: flake8
+      # args: # arguments to configure black
+      #   - --max-line-length=88
+      args: ["--config=.flake8"]
+      # args: ['--ignore=F401,W503']
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.1.0
+    hooks:
+    - id: codespell
+      name: codespell
+      description: Checks for common misspellings in text files.
+      entry: codespell
+      language: python
+      types: [text]
+      exclude: >
+            (?x)^(
+                .*country_list.py
+            )$
+      args: [--skip="country_list.py"]
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+    - id: isort
+      exclude: ^app/main.py
+      args: ["--profile", "black", "--filter-files"]
+  - repo: https://github.com/psf/black
+    rev: 22.6.0
+    hooks:
+    - id: black
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+    rev: v1.3.1
+    hooks:
+    - id: python-safety-dependencies-check
+      files: pyproject.toml
